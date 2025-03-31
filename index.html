@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>landryWeb</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'MaPolice', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(11, 11, 37);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-left: 70px;
+            margin-right: 70px;
+        }
+        nav {
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            border-bottom: 1px solid yellowgreen;
+            z-index: 100;
+            position: sticky;
+            top: 0;
+            background-color: rgb(15, 9, 36);
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.5rem; 
+            text-shadow: 2px 2px 4px rgba(66, 161, 66, 0.7);
+        }
+        .icon-menu {
+            display: none; 
+            font-size: 30px;
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        header {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 40px 0;
+            color: white;
+          
+        }
+        .header-content {
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+        } 
+
+
+
+
+        h2, h4, h1, h3, p {
+            color: white;
+            font-family: 'MaPolice', sans-serif;
+        }
+        p {
+            font-size: 20px;
+        }
+        h3 {
+            font-size: 30px;
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 50px;
+            line-height: 1;
+            margin: 0; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold; 
+            font-size: 25px; 
+            margin-top: 5px; 
+           
+        }
+        h1 {
+            font-family: 'Satisfy', cursive;
+            font-weight: normal;
+            font-size: 35px; 
+            line-height: 1;
+            margin-top: 1px;
+            text-decoration: underline;
+            text-decoration-color: yellowgreen;
+        }
+        img {
+            width: 230px; 
+            height: 230px; 
+            border-radius: 50%; 
+            border: 9px dotted yellowgreen; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px; 
+        }
+        .combined-container {
+            display: flex; 
+            justify-content: space-between; 
+            flex-wrap: wrap; 
+        }
+        .home-container, #competence, #about, .scolarite-container {
+            flex: 1; 
+            height: 380px; 
+            margin: 30px; 
+            padding: 20px; 
+            border-radius: 5px; 
+   
+            box-shadow: 0 3px 6px rgb(101, 121, 62);
+            transition: background-color 0.3s; /* Transition pour l'effet hover */
+        }
+
+        .home-container:hover, .scolarite-container:hover, #about:hover, #competence:hover {
+            background-image: url('photos/f.avif');
+            height: 381px;  /* Changez cette couleur selon vos préférences */
+        }
+        .back-button, .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: yellowgreen;
+            color: #fff;
+            padding: 9px;
+            border: none;
+            font-size: 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            text-align: center;
+        }
+        .back-button:hover, .scroll-to-top:hover {
+            background: #0056b3;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px; 
+            margin: 0 auto; 
+            margin-bottom: 20px;
+            border-radius: 2px;
+            padding: 20px;
+            box-shadow: 0 3px 6px rgb(101, 121, 62);
+        }
+        label {
+            color: #fff; 
+            margin-bottom: 5px;
+            font-size: 25px;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[name="message"] {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 40px; /* Ajustez la hauteur ici */
+    }
+
+
+
+
+        button {
+            background: yellowgreen;
+            color: black;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background: rgb(94, 110, 62);
+        }
+        .contact-icons {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .contact-icons a {
+            margin: 0 10px;
+            color: white;
+            border-radius: 50%; 
+            padding: 5px; 
+            display: inline-block; 
+        }
+        .contact-icons i {
+            font-size: 34px; 
+        }
+        .mobile-menu {
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 60%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100; 
+            color: white;
+            text-align: center;
+            padding: 10px 0; 
+            margin-top: 1px;
+        }
+        .mobile-menu a {
+            display: block;
+            margin: 1px 0;
+            font-size: 1.5rem;
+            color: yellowgreen;
+            text-decoration: none;
+        }
+
+
+.icon-row {
+    display: flex;
+    justify-content: center; /* Center the icons */
+    margin: 2px 0; /* Space between rows */
+}
+
+        .close-menu {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 40px;
+            color: yellowgreen;
+            cursor: pointer;
+        }
+
+        .pdiv {
+            font-size: 20px;
+        }
+
+        .photopetit {
+            width: 90px; 
+            height: 90px; 
+            border-radius: 50%; 
+            border: 1px solid yellowgreen; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px; 
+        }
+
+        .iconmen  {
+           
+            align-items: center;
+          justify-content: center;
+          text-align: center;
+        
+        }
+      
+        .iconmen a {
+           color: white;
+            margin:10px;
+        }
+        @media (max-width: 768px) {
+            .icon-menu {
+                display: block; 
+                margin-left: auto; /* Align icon to the right */
+                font-size: 26px; /* Adjust size */
+            }
+            header {
+                flex-direction: column; 
+                align-items: center; 
+            }
+            .home-container, #competence, #about, .scolarite-container {
+                flex: 0 0 100%; 
+                margin: 10px 0; 
+            }
+            img {
+                margin: 0; 
+            }
+            nav a {
+                display: none; 
+            }
+            p {
+                font-size: 17px;
+            }
+            .pdiv {
+                font-size: 17px;
+            }
+            .menu-button {
+                display: block; 
+                margin-top: 20px;
+                font-size: 30px; 
+                background: transparent; 
+                border: none; 
+                color: rgb(118, 156, 27); 
+                cursor: pointer; 
+            }
+            .contact-icons {
+                display: none; 
+            }
+            form {
+                margin-bottom: 20px;
+            }
+       
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 1.5s infinite;
+        }
+    }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+    </style>  
+</head>
+<body>
+<div class="do">
+<nav> 
+    <div class="menu">
+        <div class="menu-container">
+            <button class="menu-button icon-menu" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i> 
+            </button>
+            <a href="#about">À propos</a>
+            <a href="#scolarite">Scolarité</a>
+            <a href="#competence">Compétence</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>    
+        </div>
+        <div class="contact-icons">
+            <a href="https://github.com/landryifashavyose" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/landrylondon.ifashavyose" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/ifashavyose/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/61417126" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:londonifashavyose@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="https://app.slack.com/client/T084E4WDC6P/C084GNFHSCU" target="_blank"><i class="fab fa-slack"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/ifashavyose" target="_blank"><i class="fab fa-twitter"></i></a>
+     
+           
+            
+      
+           
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+        <span class="close-menu" onclick="closeMenu()">&times;</span>
+        <img class="photopetit" src="ll.png" alt="Ma Photo">
+        <div class="iconmen">
+            <div class="icon-row">
+                <a href="https://github.com/landryifashavyose" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/landrylondon.ifashavyose" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/ifashavyose/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/61417126" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="icon-row">
+                <a href="mailto:londonifashavyose@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://app.slack.com/client/T084E4WDC6P/C084GNFHSCU" target="_blank"><i class="fab fa-slack"></i></a>
+                <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/ifashavyose" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <a href="#about">À propos</a>
+        <a href="#scolarite">Scolarité</a>
+        <a href="#competence">Compétence</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a> 
+    </div>
+</nav>
+
+<header>
+    <div class="header-content">
+        <h2>Landry Ifashavyose</h2> 
+        <h4 id="typing-effect"></h4> <!-- Animation de texte -->
+    </div>
+    <div><img src="photos/ll.png" alt="Ma Photo"></div>
+</header>
+
+
+
+<div class="combined-container">
+    <div class="home-container">
+        <h1>Compétence</h1>
+        <div class="home-text">
+            <p class="pdiv">Langages de Programmation : HTML/CSS, JavaScript, PHP/Python</p>
+            <p class="pdiv">Frameworks et Bibliothèques : Bootstrap</p>
+            <p class="pdiv">Bases de Données : MySQL</p>
+            <p class="pdiv">Autres Compétences : Résolution de Problèmes, Collaboration</p>
+        </div>
+    </div>
+
+    <div class="scolarite-container" id="competence">
+        <h1>Scolarité</h1>
+        <p class="pdiv">2009 à 2015 : École primaire Bugenyuzi II</p>
+        <p class="pdiv">2015 à 2018 : Lycée Technique et Christ Roi de Mushasha (LTCR)</p>
+        <p class="pdiv">2022 à 2025 : Université du Burundi, campus Kiriri</p>
+    </div>
+
+    <section id="about">
+        <h1>À propos</h1>
+        <p class="pdiv">Je suis un informaticien passionné par la technologie et l'innovation. 
+            J'ai obtenu un diplôme  en développement web et j'ai eu l'opportunité de travailler sur divers projets, allant de simples sites web à des solutions complexes. 
+            Je crois en l'importance de la collaboration et  créativité dans la résolution de problèmes, et je m'engage à créer des applications qui enrichissent vos expériences</p>
+    </section>
+</div>
+
+<section id="services">
+    <h1>Services</h1>
+    <h3>Création des Sites Web et Amélioration de Sites Existants</h3>
+    <p>Je développe des sites web modernes et responsives, adaptés à votre vision et à vos objectifs. Que ce soit un site vitrine, un blog ou une boutique en ligne, je m'assure que chaque projet soit unique et optimisé pour l'expérience utilisateur et je peux optimiser vos sites web actuels en ajoutant de nouvelles fonctionnalités et en améliorant leur performance.</p>
+    <h3>Création des applications Web et Amélioration d'applications Existantes</h3>
+    <p>Je me spécialise dans la création d'applications web sur mesure et l'amélioration d'applications existantes pour répondre à vos besoins spécifiques.</p>
+    <h3>Pourquoi Choisir Mes Services ?</h3>
+    <p>N'hésitez pas à me contacter pour discuter de la manière dont je peux améliorer votre site web et ajouter des fonctionnalités qui feront la différence. Je serais ravi de vous aider à atteindre vos objectifs !</p>
+</section>
+
+<section id="contact">
+    <h1>Contact</h1>
+    <div class="contact-icons">
+        <p>Vous pouvez me contacter sur mes plateformes ou en remplissant le formulaire ci-dessous :</p>
+        <a href="https://github.com/landryifashavyose" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.facebook.com/landrylondon.ifashavyose" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/ifashavyose/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/61417126" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:londonifashavyose@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+        <a href="https://app.slack.com/client/T084E4WDC6P/C084GNFHSCU" target="_blank"><i class="fab fa-slack"></i></a>
+        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://x.com/ifashavyose" target="_blank"><i class="fab fa-twitter"></i></a>
+    
+    </div>
+
+
+
+    <form id="my-form" action="https://formspree.io/f/xwplnbjy" method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required />
+        <label>Message:</label>
+        <input type="text" name="message" required />
+        <button type="submit" id="my-form-button">Envoyer</button>
+        <p id="my-form-status"></p>
+    </form>
+</section>
+
+<button class="back-button" onclick="scrollToSection()"></button>
+<button class="scroll-to-top" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+</div>
+
+<script>
+    const text = "Je suis un  informaticien dans le développement des sites et des applications web.";
+    let index = 0;
+    const speed = 100; 
+
+    function typeText() {
+        if (index < text.length) {
+            document.getElementById("typing-effect").innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeText, speed);
+        }
+    }
+
+    window.onload = typeText;
+
+    function toggleMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.style.display = (mobileMenu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function closeMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.style.display = 'none';
+    }
+
+    let currentSection = 'home'; 
+
+    document.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section');
+        let found = false;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 10 && rect.bottom >= 0 && !found) {
+                found = true;
+                currentSection = section.id; 
+            }
+        });
+
+        const backButton = document.querySelector('.back-button');
+        backButton.style.display = found ? 'block' : 'none'; 
+
+        const scrollToTopButton = document.querySelector('.scroll-to-top');
+        scrollToTopButton.style.display = window.scrollY > 200 ? 'block' : 'none'; 
+    });
+
+    function scrollToSection() {
+        const previousSectionId = currentSection === 'about' ? 'home' : (currentSection === 'services' ? 'about' : (currentSection === 'contact' ? 'services' : 'home'));
+        const section = document.getElementById(previousSectionId);
+        window.scrollTo({
+            top: section.offsetTop,
+            behavior: 'smooth'
+        });
+    }
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    var form = document.getElementById("my-form");
+    var submit = document.getElementById("my-form-button");
+
+    form.addEventListener("submit", () => {
+        submit.textContent = "Envoi en cours...";
+    });
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("my-form-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                setTimeout(() => {
+                    status.innerHTML = "";  
+                }, 2000);
+                status.innerHTML = "Merci, votre message a été envoyé.";  
+                submit.textContent = "Envoyer";
+                form.reset();
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        status.innerHTML = "Oups ! Il y a eu un problème lors de l'envoi de votre formulaire.";
+                        submit.textContent = "Envoyer";
+                    }
+                });
+            }
+        }).catch(error => {
+            status.innerHTML = "Oups ! Il y a eu un problème lors de l'envoi de votre message";
+            submit.textContent = "Envoyer";
+        });
+    }
+    form.addEventListener("submit", handleSubmit);
+</script>
+
+
+</body>                                  
+</html>                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
